@@ -1,1 +1,2 @@
-echogit add .
+<?php
+echo "This is the main"

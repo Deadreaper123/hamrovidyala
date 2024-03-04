@@ -5,16 +5,17 @@
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background-color: #f3f3f3;
+            /* background-color: #f3f3f3; */
+            background-image: url("img/backgroundimg.jpg");
         }
         .container {
             width: 300px;
             padding: 16px;
-            background-color: white;
+            background-color: none;
             margin: 0 auto;
             margin-top: 100px;
             border: 1px solid black;
-            border-radius: 4px;
+            border-radius: 15px;
         }
         input[type=text], input[type=password] {
             width: 100%;
@@ -40,6 +41,7 @@
 </head>
 <body>
     <div class="container">
+        <h2>Login your account</h2>
         <label for="uname"><b>Username</b></label>
         <input type="text" placeholder="Enter Username" name="uname" required>
 

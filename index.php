@@ -29,19 +29,19 @@
           <a class="nav-link programs" href="#">Programs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link admissions" href="#">Admissions</a>
+          <a class="nav-link admissions" href="Admission.php">Admissions</a>
         </li>
         <li class="nav-item">
           <a class="nav-link downloads" href="#">Downloads</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link about_us" href="#">About Us</a>
+          <a class="nav-link about_us" href="about.php">About Us</a>
         </li>
         <li class="nav-item">
           <a class="nav-link contact_us" href="#">Contact Us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="loginpage.html"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Login</a>
+          <a class="nav-link" href="loginpage.php"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Login</a>
         </li>
       </ul>
     </div>
@@ -101,24 +101,48 @@
     object-fit: cover;
   }
   </style>
-
   <!-- sliding image section ends here -->
+
 
 
   <!-- Welcome section of the school -->
 <section id="welcome" style="padding: 50px 0;">
   <div class="container text-center">
     <h2 ><b>Welcome to HamroVidayala</b></h2>
-    <p>We are a community of learners who believe that exploration and curiosity are the best ways to learn. We are committed to providing an environment where you can discover your potential and achieve your goals. Join us and be a part of our vibrant and diverse community.</p>
+    <p >Welcome to "Hamro Vidyalaya", a project based on the School Management System (SMS). In today's education system, the 
+      quality of education plays a crucial role in the country's development. Many educational organizations are striving to 
+      improve their systems, and effective management of school resources using current technology is a key aspect of this 
+      improvement.</p><br>
 
-<style>
+    <!-- show more button -->
+      <p id="more-text" style="display: none;">Our project aims to facilitate continuous communication between the principal, teachers, parents, and students. To achieve 
+        this, we have developed a website that caters to the needs of all users. For students, the website allows them to view their 
+        grades, communicate with the principal and teachers for complaints, recommendations, or absence permissions, and stay updated 
+        with school news and posts from other users.</p>
+      <button class="btn btn-primary" id="show-more">Show More</button>
 
-  #welcome p {
-    text-align: justify;
-    font-family: roboto;
-    font-size: larger;
-  }
-</style>
+      <script>
+        const moreText = document.getElementById("more-text");
+        const showMoreButton = document.getElementById("show-more");
+
+        showMoreButton.addEventListener("click", function() {
+          if (moreText.style.display === "none") {
+            moreText.style.display = "block";
+            showMoreButton.textContent = "Show Less";
+          } else {
+            moreText.style.display = "none";
+            showMoreButton.textContent = "Show More";
+          }
+        });
+      </script>
+
+    <style>
+      #welcome p {
+        text-align: justify;
+        font-family: roboto;
+        font-size: larger;
+      }
+    </style>
 
   </div>
 </section>
@@ -159,19 +183,19 @@
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="img/gallery/photo1.jpg" class="d-block w-100" alt="Photo 1">
+          <img src="img/class1.jpg" class="d-block w-100" alt="Photo 1">
           <div class="carousel-caption">
             <h3>Date 1</h3>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="img/anita-jankovic-162ppyjclxM-unsplash.jpg" class="d-block w-100" alt="Photo 2">
+          <img src="img/pencil.jpg" class="d-block w-100" alt="Photo 2">
           <div class="carousel-caption">
             <h3>Date 2</h3>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="img/ashton-bingham-SAHBl2UpXco-unsplash.jpg" class="d-block w-100" alt="Photo 3">
+          <img src="img/play.jpg" class="d-block w-100" alt="Photo 3">
           <div class="carousel-caption">
             <h3>Date 3</h3>
           </div>
@@ -217,6 +241,7 @@
   </div>
 </footer>
 <!-- Footer section ends here -->
+ 
 <!-- Footer section css code is here-->
 <style>
   .footer {

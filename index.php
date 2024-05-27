@@ -2,7 +2,7 @@
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark default-color">
-    <a class="navbar-brand" href="#"><b>HAMROVIDYALAYA</b></a>
+    <a class="navbar-brand" href="index.php"><b>HAMROVIDYALAYA</b></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333" aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -172,14 +172,7 @@
         </div>
     </div>
 </section>
-
-
-
 <!-- Our Programme section End here...... -->
-
-
-
-
 
 
 
@@ -302,47 +295,5 @@
 </section>
 
 
-
-
-
-
-
-
-<!-- <footer class="py-5 bg-dark text-white">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4">
-                <h5>About Us</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quod.</p>
-            </div>
-            <div class="col-lg-4">
-                <h5>Contact Us</h5>
-                <ul class="list-unstyled">
-                    <li>Address: Lalitpur, Nepal</li>
-                    <li>Phone: +01XXXXXXX</li>
-                    <li>Email: hamrovidyalaya@info.com</li>
-                </ul>
-            </div>
-            <div class="col-lg-4">
-                <h5>Follow Us</h5>
-                <ul class="list-inline">
-                    <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-                    <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-                    <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <section class="py-3 bg-dark text-white">
-        <div class="container">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-auto">
-                    <p class="mb-0 text-center">&copy; <?php echo date("Y"); ?> HAMROVIDYALAYA. All rights reserved.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-</footer> -->
 
 <?php include('footer.php'); ?>

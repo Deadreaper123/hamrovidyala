@@ -1,6 +1,8 @@
-<?php
-  session_start();
-  session_destroy();
+<?php 
+    session_start();
+    session_destroy();
 
-  header('Location: index.php');
-  ?>
+    // header('location: ../main.php')
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    exit();
+?>

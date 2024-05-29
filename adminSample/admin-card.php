@@ -28,7 +28,9 @@
             </div>
         </div>
 
-      </div><!--/. container-fluid -->
+      </div>
     </section>
-    <!-- /.content -->
+    
+
+
 <?php include('footer.php') ?>

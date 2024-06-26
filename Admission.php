@@ -1,18 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admission Form</title>
-    <link rel="stylesheet" href="Admission.css">
-    <script src="scripts.js" defer></script>
-</head>
-<body>
+<?php
+if (isset($_POST['submit'])) {
+    $server = 'localhost';
+    $user = 'root';
+    $password = '';
+    $dbname = 'hamro_vidyalaye';
 
-<div class="form-container">
-    <h1>HAMRO VIDYALAYA</h1>
-    <h2>Admission Form</h2>
-    <?php
+    $conn = new mysqli($server, $user, $password, $dbname);
+
+    if ($conn->connect_error) {
+        die("Cannot connect: " . $conn->connect_error);
+    }
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $name = htmlspecialchars($_POST['name']);
         $email = htmlspecialchars($_POST['email']);
@@ -27,26 +25,51 @@
 
         // Simple validation
         if (empty($name) || empty($email) || empty($phone) || empty($permanentaddress) || empty($temporaryaddress) || empty($dob_bs) || empty($dob_ad) || empty($fathers_name) || empty($mothers_name) || empty($class)) {
-            echo "<p class='error'>All fields are required.</p>";
+            $error = "All fields are required.";
         } else {
             // Display the submitted data
-            echo "<div id='form-data'>";
-            echo "<p class='success'>Thank you for your submission, $name.</p>";
-            echo "<p><strong>Email:</strong> $email</p>";
-            echo "<p><strong>Phone:</strong> $phone</p>";
-            echo "<p><strong>Permanent Address:</strong> $permanentaddress</p>";
-            echo "<p><strong>Temporary Address:</strong> $temporaryaddress</p>";
-            echo "<p><strong>Date of Birth (B.S):</strong> $dob_bs</p>";
-            echo "<p><strong>Date of Birth (A.D):</strong> $dob_ad</p>";
-            echo "<p><strong>Father's Name:</strong> $fathers_name</p>";
-            echo "<p><strong>Mother's Name:</strong> $mothers_name</p>";
-            echo "<p><strong>Class:</strong> $class</p>";
-            echo "</div>";
-
-            // Provide options to download and print
-            echo "<button onclick='printForm()'>Print Form</button>";
-            echo "<button onclick='downloadForm()'>Download Form</button>";
+            $success = "Thank you for your submission, $name.";
+            $submitted_data = [
+                'Email' => $email,
+                'Phone' => $phone,
+                'Permanent Address' => $permanentaddress,
+                'Temporary Address' => $temporaryaddress,
+                'Date of Birth (B.S)' => $dob_bs,
+                'Date of Birth (A.D)' => $dob_ad,
+                'Father\'s Name' => $fathers_name,
+                'Mother\'s Name' => $mothers_name,
+                'Class' => $class
+            ];
         }
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Form</title>
+    <link rel="stylesheet" href="Admission.css">
+    <script src="scripts.js" defer></script>
+</head>
+<body>
+<div class="form-container">
+    <h1>HAMRO VIDYALAYA</h1>
+    <h2>Admission Form</h2>
+    <?php
+    if (!empty($error)) {
+        echo "<p class='error'>$error</p>";
+    } elseif (!empty($success)) {
+        echo "<div id='form-data'>";
+        echo "<p class='success'>$success</p>";
+        foreach ($submitted_data as $key => $value) {
+            echo "<p><strong>$key:</strong> $value</p>";
+        }
+        echo "</div>";
+        echo "<button onclick='printForm()'>Print Form</button>";
+        echo "<button onclick='downloadForm()'>Download Form</button>";
     }
     ?>
     <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
@@ -100,7 +123,7 @@
             <option value="Ten">Ten</option>
         </select>
 
-        <button type="submit">Submit</button>
+        <button type="submit" name="submit">Submit</button>
     </form>
 </div>
 

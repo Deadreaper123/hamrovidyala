@@ -1,3 +1,16 @@
+<?php
+if(isset($_POST['submit']))
+$server = 'localhost';
+$user = 'root';
+$password = '';
+$database = 'hamro_vidyalaye';
+
+$conn = $mysqli_connect($server,$user,$password,$database)
+{
+    if(!$conn){
+        die("Cannot connect")
+    }
+}
 <html>
     <head>
         <title>register</title>

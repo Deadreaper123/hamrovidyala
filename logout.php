@@ -3,6 +3,6 @@
     session_destroy();
 
     // header('location: ../main.php')
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    header('Location: index.php');
     exit();
 ?>

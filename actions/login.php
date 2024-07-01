@@ -15,10 +15,10 @@ if (isset($_POST['login'])) {
             $table = 'admin';
             break;
         case 'student':
-            $table = 'student';
+            $table = 'student_data';
             break;
         case 'teacher':
-            $table = 'teacher';
+            $table = 'teacher_data';
             break;
         default:
             header("Location: $site_url/accountrole.php");

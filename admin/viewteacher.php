@@ -15,7 +15,7 @@ include('header.php');
 <!doctype html>
 <html lang="en">
 <head>
-    <title>View Students</title>
+    <title>View Teachers</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -33,57 +33,49 @@ include('header.php');
     </div>
     <div class="row mt-3">
         <div class="col">
-            <h2 class="text-center mb-4">View Student Details</h2>
+            <h2 class="text-center mb-4">View Teacher Details</h2>
             <div class="table-responsive">
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Name</th>
+                            <th>First Name</th>
                             <th>Last Name</th>
-                            <th>Father's Name</th>
-                            <th>Mother's Name</th>
-                            <th>Class</th>
-                            <th>Address</th>
-                            <th>Date of Birth</th>
                             <th>Gender</th>
-                            <th>Email</th>
                             <th>Phone Number</th>
-                            <!-- <th>Photo</th> -->
+                            <th>Email</th>
+                            <th>Birthdate</th>
+                            <th>Address</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        // Perform SQL query to fetch student data
-                        $sql = "SELECT * FROM student_data";
+                        // Perform SQL query to fetch teacher data
+                        $sql = "SELECT * FROM teacher_data";
                         $result = mysqli_query($conn, $sql);
 
                         if (mysqli_num_rows($result) > 0) {
                             $count = 1;
                             while ($row = mysqli_fetch_assoc($result)) {
                                 echo "<tr>";
-                                echo "<td>{$row['ID']}</td>";
-                                echo "<td>{$row['First_Name']}</td>";
-                                echo "<td>{$row['Last_Name']}</td>";
-                                echo "<td>{$row['Father_Name']}</td>";
-                                echo "<td>{$row['Mother_Name']}</td>";
-                                echo "<td>{$row['Class']}</td>";
-                                echo "<td>{$row['Address']}</td>";
-                                echo "<td>{$row['Date_of_Birth']}</td>";
-                                echo "<td>{$row['Gender']}</td>";
-                                echo "<td>{$row['Email']}</td>";
-                                echo "<td>{$row['Phone_Number']}</td>";
-                                // echo "<td><img src='uploads/{$row['Photo']}' class='img-fluid' style='max-width: 100px;' alt='Student Photo'></td>";
+                                echo "<td>{$row['id']}</td>";
+                                echo "<td>{$row['first_name']}</td>";
+                                echo "<td>{$row['last_name']}</td>";
+                                echo "<td>{$row['gender']}</td>";
+                                echo "<td>{$row['phone']}</td>";
+                                echo "<td>{$row['email']}</td>";
+                                echo "<td>{$row['birthdate']}</td>";
+                                echo "<td>{$row['address']}</td>";
                                 echo "<td>
-                                        <a href='editstudent.php?id={$row['ID']}' class='btn btn-primary btn-sm'>Edit</a>
-                                        <a href='deletestudent.php?id={$row['ID']}' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete this student?\")'>Delete</a>
+                                        <a href='editteacher.php?id={$row['id']}' class='btn btn-primary btn-sm'>Edit</a>
+                                        <a href='deleteteacher.php?id={$row['id']}' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete this teacher?\")'>Delete</a>
                                       </td>";
                                 echo "</tr>";
                                 $count++;
                             }
                         } else {
-                            echo "<tr><td colspan='13' class='text-center'>No students found</td></tr>";
+                            echo "<tr><td colspan='9' class='text-center'>No teachers found</td></tr>";
                         }
                         ?>
                     </tbody>

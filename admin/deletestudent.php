@@ -10,12 +10,18 @@ if (!isset($_SESSION['username'])) {
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $sql = "DELETE FROM student_data WHERE id='$id'";
-    
-    if (mysqli_query($conn, $sql)) {
-        header('Location: viewstudents.php');
+
+    // Prepare the statement
+    $stmt = $conn->prepare("DELETE FROM student_data WHERE id = ?");
+    $stmt->bind_param("i", $id);
+
+    if ($stmt->execute()) {
+        header('Location: viewstudent.php');
     } else {
-        echo "Error deleting record: " . mysqli_error($conn);
+        echo "Error deleting record: " . $stmt->error;
     }
+
+    // Close the statement
+    $stmt->close();
 }
 ?>

@@ -1,57 +1,24 @@
 
-<?php include('header.php'); ?>
+<?php include('header.php'); 
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark default-color">
-    <a class="navbar-brand" href="index.php"><b>HAMROVIDYALAYA</b></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333" aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="index.php">Home<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">About Us</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Contact Us</a>
-            </li>
-        </ul>
-        <ul class="navbar-nav ml-auto nav-flex-icons">
-            <li class="nav-item dropdown">
-                <?php if (isset($_SESSION['login'])) { ?>
-                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-user mr-2"></i>Account
-                </a>
-                <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
-                    <a class="dropdown-item" href="/hamrovidyalaya/admin/dashboard.php">Dashboard</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="logout.php">Logout</a>
-                </div>
-                <?php } else { ?>
-                <a href="accountrole.php" class="nav-link"><i class="fa fa-user mr-2"></i>User login</a>
-                <?php } ?>
-            </li>
-        </ul>
-    </div>
-</nav>
-<!--/.Navbar -->
+?>
+
+
 
 <div class="py-5 shadow" style="background:linear-gradient(-45deg, #3923a7 50%, transparent 50%)">
     <div class="container-fluid my-2">
         <div class="row">
             <div class="col-lg-6 my-auto">
                 <h1 class="display-3 font-weight-bold">Admission Open for 2023-2024</h1>
-                <p class="py-lg-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro aperiam similique error, <br> iste molestiae dignissimos odit voluptat</p>
-                <a href="#" class="btn btn-lg btn-primary">Call to Action</a>
+                <h3>Admission is now open for the academic year 2023-2024. Join us as we embark on a journey of learning and growth together!
+                </h3>
+                <a href="tel:9818606623" class="btn btn-lg btn-primary">Call Us</a>
             </div>
             <div class="col-lg-6">
                 <div class="col-lg-8 mx-auto card shadow-lg">
                     <div class="card-body py-5">
                         <h3>Inquiry Form</h3>
-                        <form action="" method="post">
+                        <form action="https://formspree.io/f/xgvweore" method="post">
                             <!-- Material input -->
                             <div class="md-form">
                                 <input type="text" id="form1" class="form-control" name="name">
@@ -67,9 +34,13 @@
                                 <input type="text" id="mobile" class="form-control" name="mobile">
                                 <label for="mobile">Your Mobile</label>
                             </div>
+                            <div class="md-form">
+                                <input type="text" id="class" class="form-control" name="class">
+                                <label for="class">Class</label>
+                            </div>
                             <!-- Material input -->
                             <div class="md-form">
-                                <textarea name="message" id="message" class="form-control md-textarea" rows="3"></textarea>
+                                <textarea name="message" id="message" class="form-control md-textarea" rows="3" name="message"></textarea>
                                 <label for="message">Your Query</label>
                             </div>
                             <button class="btn btn-primary btn-block" type="submit">Submit Form</button>
@@ -88,8 +59,10 @@
             <div class="col-lg-6 py-5">
                 <h2 class="font-weight-bold">About <br> HAMROVIDYALAYA</h2>
                 <div class="pr-5">
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque quidem id ad dolores iusto nobis sunt, atque, eligendi nesciunt ipsa aliquam mollitia nemo magnam quae adipisci libero voluptatum omnis vel. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo dicta ipsum ea sint quisquam sit dignissimos numquam. Velit aliquid necessitatibus id adipisci officiis nobis voluptates maiores consectetur, sunt nisi? Commodi.</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam quos ab, recusandae repellendus cum quasi totam saepe sit earum tenetur modi vitae explicabo, neque, consequatur aut ipsam dolore magni laudantium?</p>
+                    <p>Welcome to "Hamro Vidyalaya", a project based on the School Management System (SMS). In today's education system, the quality of education plays a crucial role in the country's development. Many educational organizations are striving to improve their systems, and effective management of school resources using current technology is a key aspect of this improvement.
+                        Our project aims to facilitate continuous communication between the principal, teachers, parents, and students. To achieve this, we have developed a website that caters to the needs of all users. For students, the website allows them to view their grades, communicate with the principal and teachers for complaints, recommendations, or absence permissions, and stay updated with school news and posts from other users.
+                        </p>
+                    <p>For administrators and principals, the system provides full control, enabling them to add new parents, teachers, and students along with their respective subjects. Teachers can input and edit grades for their subjects and have direct communication with students and parents. Parents have access to their children's grades without the ability to edit them and can directly communicate with teachers and the principal. </p>
                 </div>
                 <a href="about-us.php" class="btn btn-secondary">Know More</a>
             </div>
@@ -183,7 +156,7 @@
         <div class="row">
             <div class="col-lg-6 pr-5">
                 <h2>Achievements</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, commodi laboriosam. Ullam aliquam dicta officiis accusamus.</p>
+                <p>"Our system empowers administrators with full control to manage parent, teacher, and student profiles and their subjects. Teachers can efficiently input and edit grades, fostering direct communication with students and parents. Parents enjoy transparent access to their children's grades and direct communication channels with teachers and principals."</p>
                 <img src="./assets/img/class1.jpg" alt="" class="img-fluid rounded">
             </div>
             <div class="col-lg-6 my-auto">
@@ -210,41 +183,6 @@
     </div>
 </section>
 
-<!-- Testimonials -->
-<section class="py-5">
-    <div class="container">
-        <h2 class="font-weight-bold">What People Say</h2>
-        <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-6">
-                <div class="border rounded">
-                    <div class="p-3 text-center">
-                        <span class="fa-3x" style="opacity: 0.2;">❝</span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus minus magni pariatur. Aut odio possimus iure cum ipsam ex nesciunt praesentium sint et qui accusantium, labore fugit, debitis quas cupiditate!
-                    </div>
-                </div>
-                <div class="text-center mt-n2">
-                    <img src="assets/img/placeholder.jpg" alt="rounded-circle border" width="100" height="100">
-                    <h6 class="mb-0 font-weight-bold">Name of Candidate</h6>
-                    <p><i>Designation</i></p>
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="border rounded">
-                    <div class="p-3 text-center">
-                        <span class="fa-3x" style="opacity: 0.2;">❝</span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus minus magni pariatur. Aut odio possimus iure cum ipsam ex nesciunt praesentium sint et qui accusantium, labore fugit, debitis quas cupiditate!
-                    </div>
-                </div>
-                <div class="text-center mt-n2">
-                    <img src="assets/img/placeholder.jpg" alt="rounded-circle border" width="100" height="100">
-                    <h6 class="mb-0 font-weight-bold">Name of Candidate</h6>
-                    <p><i>Designation</i></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- Footer -->
   <footer class="py-5" style="background:url(./assets/img/background.png) center/cover no-repeat">
@@ -255,9 +193,9 @@
                   <h5>Useful Links</h5>
 
                     <ul class="fa-ul ml">
-                      <li><a href="" class="text-light"><i class="fa-li fa fa-angle-right"></i>About Us</a></li>
-                      <li><a href="" class="text-light"><i class="fa-li fa fa-angle-right"></i>Home</a></li>
-                      <li><a href="" class="text-light"><i class="fa-li fa fa-angle-right"></i>Contact Us</a></li>
+                      <li><a href="about-us.php" class="text-light"><i class="fa-li fa fa-angle-right"></i>About Us</a></li>
+                      <li><a href="index.php" class="text-light"><i class="fa-li fa fa-angle-right"></i>Home</a></li>
+                      <li><a href="mailto:info@hamrovidyalaya.com" class="text-light"><i class="fa-li fa fa-angle-right"></i>Contact Us</a></li>
                     </ul>
                 </div>
 
@@ -275,10 +213,14 @@
                 <div class="col-lg-2">
                   <h5>Contact </h5>
                     <div>
-                      <p>Address: Lalitpur, Nepal</p>
-                      <p>Phone: +01XXXXXXX</p>
-                      <p>Email: info@hamrovidyalaya</p>
+                      <p> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                      </svg> Address: Lalitpur, Nepal</p>
+                      <p> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+                      </svg>  Phone: +01XXXXXXX</p>
                         <a href="mailto:info@hamrovidyalaya.com" class="text-light">
+                            <i class="fa fa-envelope"></i> Email Us</a>
                     </div>
                 </div>
           </div>

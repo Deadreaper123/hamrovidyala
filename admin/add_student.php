@@ -1,66 +1,11 @@
 <?php
 session_start();
-include('config.php');
 
 if (!isset($_SESSION['username'])) {
     header('Location: ../accountrole.php');
     exit();
 }
 include('header.php');
-
-// Handle form submission to add new student
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
-    // Fetch form data
-    $name = $_POST['name'];
-    $lastname = $_POST['lastname'];
-    $fname = $_POST['fname'];
-    $mname = $_POST['mname'];
-    $class = $_POST['class'];
-    $address = $_POST['address'];
-    $dob = $_POST['dob'];
-    $gender = $_POST['gender'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $image = $_FILES['image']['name'];
-    $targetDir = "uploads/";
-    $targetFilePath = $targetDir . basename($image);
-    $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
-
-    // Check if the image file is selected
-    if (!empty($image)) {
-        // Allow certain file formats
-        $allowedTypes = array('jpg', 'jpeg', 'png', 'gif');
-        if (in_array($fileType, $allowedTypes)) {
-            // Upload file to server
-            if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFilePath)) {
-                // Insert student details into the database
-                $query = "INSERT INTO `student_data` (`First_Name`, `Last_Name`, `Father_Name`, `Mother_Name`, `Class`, `Address`, `Date_of_Birth`, `Gender`, `Email`, `Phone_Number`, `Image_Path`) VALUES ('$name', '$lastname', '$fname', '$mname', '$class', '$address', '$dob', '$gender', '$email', '$phone', '$targetFilePath');";
-                
-                $result = mysqli_query($conn, $query);
-
-                if ($result) {
-                    $_SESSION['success_message'] = "Student details added successfully.";
-                    //....................//
-                    header("Location: studentsmanagement.php");
-                    exit();
-                } else {
-                    $_SESSION['error_message'] = "Error: " . $query . "<br>" . mysqli_error($conn);
-                }
-            } else {
-                $_SESSION['error_message'] = "Sorry, there was an error uploading your file.";
-            }
-        } else {
-            $_SESSION['error_message'] = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-        }
-    } else {
-        $_SESSION['error_message'] = "Please select an image file to upload.";
-    }
-}
-
-// Perform SQL query to fetch student data for display
-$sql = "SELECT * FROM student_data";
-$result = mysqli_query($conn, $sql);
 ?>
 
 <!doctype html>
@@ -184,7 +129,7 @@ $result = mysqli_query($conn, $sql);
                         <input type="file" class="form-control" id="image" name="image" aria-describedby="fileHelpId">
                     </div>
                     <div class="submit-btn">
-                        <button type="submit" class="btn btn-primary">Add Student</button>
+                        <button type="submit" name="submit" class="btn btn-primary">Add Student</button>
                     </div>
                 </form>
             </div>
@@ -200,3 +145,118 @@ $result = mysqli_query($conn, $sql);
 </html>
 
 <?php include('footer.php'); ?>
+<?php
+// define('DB_SERVER', 'localhost');
+// define('DB_USERNAME', 'root');
+// define('DB_PASSWORD', '');
+// define('DB_DATABASE', 'hamrovidyalaya');
+
+// $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+
+// if ($conn->connect_error) {
+//     die("Connection failed: " . $conn->connect_error);
+// }
+// // Handle form submission to add new student
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     // Fetch form data
+//     if(isset($_POST['submit'])){
+//     $name = $_POST['name'];
+//     $lastname = $_POST['lastname'];
+//     $fname = $_POST['fname'];
+//     $mname = $_POST['mname'];
+//     $class = $_POST['class'];
+//     $address = $_POST['address'];
+//     $dob = $_POST['dob'];
+//     $gender = $_POST['gender'];
+//     $email = $_POST['email'];
+//     $phone = $_POST['phone'];
+//     $image = $_FILES['image']['name'];
+//     $targetDir = "uploads/";
+//     $targetFilePath = $targetDir . basename($image);
+//     $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+
+//     // Check if the image file is selected
+//      if (!empty($image)) {
+//          // Allow certain file formats
+//        $allowedTypes = array('jpg', 'jpeg', 'png', 'gif');
+//          if (in_array($fileType, $allowedTypes)) {
+//              // Upload file to server
+            
+//             //.....................................\\
+
+//             if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFilePath)) {
+//                 // Insert student details into database
+//                   $query = "INSERT INTO student_data (First_Name, Last_Name,Father_Name,Mother_Name,Class,Address,Date_of_Birth,Gender,Email,Phone_Number) VALUES ('$name', '$lastname', '$fname', '$mname', '$class', '$address', '$dob', '$gender', 'Not created', '$image');";
+                
+//              $result = mysqli_query($conn, $query);
+
+//                 if ($result) {
+//                      $_SESSION['success_message'] = "Student details added successfully.";
+//                      header("Location: studentsmanagement.php");
+//                      exit();
+//                  } else {
+//                      $_SESSION['error_message'] = "Error: " . $query . "<br>" . mysqli_error($conn);
+//                  }
+//              } else {
+//                  $_SESSION['error_message'] = "Sorry, there was an error uploading your file.";
+//              }
+//          } else {
+//              $_SESSION['error_message'] = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+//         }
+//      } else {
+//          $_SESSION['error_message'] = "Please select an image file to upload.";
+//      }
+
+
+
+// // Perform SQL query to fetch student data for display
+// $sql = "SELECT * FROM student_data";
+// $result = mysqli_query($conn, $sql);
+// }else{
+//     die("error");
+// }
+// }
+// else{
+//     die("error");
+// }
+define('DB_SERVER', 'localhost');
+define('DB_USERNAME', 'root');
+define('DB_PASSWORD', '');
+define('DB_DATABASE', 'hamrovidyalaya');
+
+$conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Fetch form data
+    if(isset($_POST['submit'])){
+    $name = $_POST['name'];
+    $lastname = $_POST['lastname'];
+    $fname = $_POST['fname'];
+    $mname = $_POST['mname'];
+    $class = $_POST['class'];
+    $address = $_POST['address'];
+    $dob = $_POST['dob'];
+    $gender = $_POST['gender'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $image = $_FILES['image']['name'];
+    $targetDir = "uploads/";
+    $targetFilePath = $targetDir . basename($image);
+    $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+
+    $query = "INSERT INTO student_data(First_Name, Last_Name, Father_Name, Mother_Name, Class, Address, Date_of_Birth, Gender, Email, Phone_Number) VALUES ('$name', '$lastname', '$fname', '$mname', '$class', '$address', '$dob', '$gender', 'Not created', '$image')";
+    $result = mysqli_query($conn, $query);
+    if ($result) {
+        $_SESSION['success_message'] = "Student details added successfully.";
+        header('Location: studentsmanagement.php');
+        exit();
+    } else {
+        $_SESSION['error_message'] = "Error: " . $query . "<br>" . mysqli_error($conn);
+        }
+}
+}
+?>

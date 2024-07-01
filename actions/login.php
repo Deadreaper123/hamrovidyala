@@ -2,25 +2,31 @@
 session_start();
 include('config.php'); 
 $site_url = 'http://localhost/hamrovidyalaya'; 
+
 if (isset($_POST['login'])) {
     $role = $_POST['role'];
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Prepare SQL query based on role
-    if ($role === 'admin') {
-        $stmt = $conn->prepare("SELECT username, password FROM admin WHERE username = ?");
-    } elseif ($role === 'student') {
-        $stmt = $conn->prepare("SELECT username, password FROM student WHERE username = ?");
-    } elseif ($role === 'teacher') {
-        $stmt = $conn->prepare("SELECT username, password FROM teacher WHERE username = ?");
-    } else {
-        // Invalid role, redirect to the login page
-        header("Location: index.php");
-        exit();
+    // Determine the table based on the role
+    $table = '';
+    switch ($role) {
+        case 'admin':
+            $table = 'admin';
+            break;
+        case 'student':
+            $table = 'student';
+            break;
+        case 'teacher':
+            $table = 'teacher';
+            break;
+        default:
+            header("Location: $site_url/accountrole.php");
+            exit();
     }
 
-    // Bind parameters and execute query
+    // Prepare SQL query
+    $stmt = $conn->prepare("SELECT username, password FROM $table WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -31,32 +37,32 @@ if (isset($_POST['login'])) {
 
         // Verify password
         if (password_verify($password, $hashed_password)) {
-            // Password is correct, set session variables
             $_SESSION['username'] = $username;
 
             // Redirect to appropriate dashboard
-            if ($role === 'admin') {
-                header("Location: $site_url/dashboard/admin"); 
-            } elseif ($role === 'student') {
-                header("Location: $site_url/dashboard/student");
-            } elseif ($role === 'teacher') {
-                header("Location: $site_url/dashboard/teacher");
+            switch ($role) {
+                case 'admin':
+                    header("Location: $site_url/admin/dashboard.php");
+                    break;
+                case 'student':
+                    header("Location: $site_url/student");
+                    break;
+                case 'teacher':
+                    header("Location: $site_url/teacher");
+                    break;
             }
             exit();
         } else {
-            // Incorrect password
             echo "Invalid username or password.";
         }
     } else {
-        // User does not exist
         echo "Invalid username or password.";
     }
 
     $stmt->close();
     $conn->close();
 } else {
-    // If login form is not submitted, redirect to the login page
-    header("Location: index.php");
+    header("Location: $site_url/accountrole.php");
     exit();
 }
 ?>

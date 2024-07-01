@@ -165,7 +165,7 @@ a:hover{
           <a href="add_student.php" id="no-decoration">Add Student</a>
         </div>
         <div class="view-s">
-          <a href="view_student.php" id="no-decoration">View Student Options</a>
+          <a href="viewstudent.php" id="no-decoration">View Student Options</a>
         </div>
 
       </div>

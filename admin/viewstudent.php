@@ -50,6 +50,7 @@ include('header.php');
                             <th>Email</th>
                             <th>Phone Number</th>
                             <th>Photo</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -74,11 +75,15 @@ include('header.php');
                                 echo "<td>{$row['Email']}</td>";
                                 echo "<td>{$row['Phone_Number']}</td>";
                                 echo "<td><img src='uploads/{$row['Photo']}' class='img-fluid' style='max-width: 100px;' alt='Student Photo'></td>";
+                                echo "<td>
+                                        <a href='editstudent.php?id={$row['id']}' class='btn btn-primary btn-sm'>Edit</a>
+                                        <a href='deletestudent.php?id={$row['id']}' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete this student?\")'>Delete</a>
+                                      </td>";
                                 echo "</tr>";
                                 $count++;
                             }
                         } else {
-                            echo "<tr><td colspan='12' class='text-center'>No students found</td></tr>";
+                            echo "<tr><td colspan='13' class='text-center'>No students found</td></tr>";
                         }
                         ?>
                     </tbody>

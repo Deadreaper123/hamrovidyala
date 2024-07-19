@@ -171,7 +171,7 @@ $conn->close();
                         </div>
                         <div class="col-md-6">
                             <label for="phone" class="form-label">Phone Number</label>
-                            <input type="tel" class="form-control" id="phone" name="phone" required>
+                            <input type="tel" class="form-control" id="phone" name="phone" maxlength="10" pattern="\d{10}" inputmode="numeric" required>
                         </div>
                     </div>
                     <div class="submit-btn">
